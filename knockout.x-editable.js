@@ -48,12 +48,13 @@
 				//taken directly from ko.bindingHandlers['options']
 				function applyToObject(object, predicate, defaultValue) {
 					var predicateType = typeof predicate;
-					if (predicateType == "function")    // Given a function; run it against the data value
-						return predicate(object);
-					else if (predicateType == "string") // Given a string; treat it as a property name on the data value
-						return object[predicate];
-					else                                // Given no optionsText arg; use the data value itself
-						return defaultValue;
+
+					// Given a function; run it against the data value
+					if (predicateType == "function") return predicate(object);
+					// Given a string; treat it as a property name on the data value
+					if (predicateType == "string") return object[predicate];
+					// Given no optionsText arg; use the data value itself
+					return defaultValue;
 				}
 
 				editableOptions.source = function() {
